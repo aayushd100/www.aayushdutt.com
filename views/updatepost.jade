@@ -1,0 +1,72 @@
+extends layout
+
+block content
+	// Page Header
+	header.masthead(style="background-image: url('/img/add-post.jpg')")
+		.overlay
+		.container
+			.row
+				.col-lg-8.col-md-10.mx-auto
+					.page-heading
+						h1 Updating: #{post.title}
+	// Main Content
+	.container
+		.row
+			.col-lg-8.col-md-10.mx-auto				
+				form#contactForm(method="POST", action="/posts/update/#{post.tag}", enctype="multipart/form-data")
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Post Title
+							input#name.form-control(type='text', value="#{post.title}", name='title' placeholder='Title', required='', data-validation-required-message='Please enter the Title')
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Sub-Heading
+							input#email.form-control(type='text', value="#{post.subheading}", name='subheading' placeholder='Sub-Heading')
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Category
+							input#email.form-control(type='text', value="#{post.category}", name='category' placeholder='Category', required='', data-validation-required-message='Please enter a category')
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Post Body
+							textarea#message.form-control(rows='5',  name='body' placeholder='Post Starts with...', required='', data-validation-required-message='Please enter Post Content') #{post.body_markdown}
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Tag
+							input#phone.form-control(type='text', value="#{post.tag}", name='tag' placeholder='Tag',required='', data-validation-required-message='Please enter a tag to access the post')
+							p.help-block.text-danger		
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Author
+							input#email.form-control(type='text', value="#{post.author}", name='author' ,placeholder='Author' )
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Meta Body
+							input#email.form-control(type='text', value="#{post.meta_body}", name='meta_body' placeholder='Meta Body', required='', data-validation-required-message='Please enter the meta body')
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Post Image Name
+							input#email.form-control(type='text', value="#{post.post_image}", name='post_image' placeholder='Post image name')
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Password
+							input#email.form-control(type='password', name='password', placeholder='Shhh.. Enter your password quitely', required='', data-validation-required-message='What?? You don\'t know the password??' )
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Images
+							input#file.form-control(type='file', name='images', placeholder='Choose Images', multiple )
+							p.help-block.text-danger
+					br
+					#success
+					.form-group
+						button#sendMessageButton.btn.btn-primary(type='submit') Update
+	hr
+	

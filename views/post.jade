@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	// Page Header
+	header.masthead(style="background-image: url('/uploads/#{post.post_image}')")
+		.overlay
+		.container
+			.row
+				.col-lg-8.col-md-10.mx-auto
+					.post-heading
+						h1 #{post.title}
+						h2.subheading #{post.subheading}
+						span.meta
+							| Posted by 
+							a(href='/about') #{post.author}
+							|                 on #{post.date}
+	// Post Content
+	article
+		.container
+			.row
+				.col-lg-8.col-md-10.mx-auto
+					p !{post.body}
+	hr
+	
