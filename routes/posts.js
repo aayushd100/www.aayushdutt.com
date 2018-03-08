@@ -8,16 +8,16 @@ router.route('/')
   .get(helpers.getPosts)
 
 
-router.route('/add')
-  .get(helpers.getAddPost)
-  .post(helpers.addPost)
+// router.route('/add')
+//   .get(helpers.getAddPost)
+//   .post(helpers.addPost)
 
-router.route('/update')
-  .get(helpers.getUpdatePosts)
+// router.route('/update')
+//   .get(helpers.getUpdatePosts)
 
-router.route('/update/:tag')
-  .get(helpers.getUpdatePost)
-  .post(helpers.updatePost)
+// router.route('/update/:tag')
+//   .get(helpers.getUpdatePost)
+//   .post(helpers.updatePost)
 
 router.route('/:tag')
   .get(helpers.getPost)

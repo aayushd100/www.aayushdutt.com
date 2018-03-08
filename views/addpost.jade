@@ -19,7 +19,7 @@ block content
 				// Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work.
 				// WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address!
 				// To use the contact form, your site must be on a live web host with PHP! The form will not work locally!
-				form#contactForm(method="POST", action="/posts/add", enctype="multipart/form-data")
+				form#contactForm(method="POST", action="/admin/add", enctype="multipart/form-data")
 					.control-group
 						.form-group.floating-label-form-group.controls
 							label Post Title
@@ -44,11 +44,11 @@ block content
 						.form-group.floating-label-form-group.controls
 							label Tag
 							input#phone.form-control(type='text',name='tag' placeholder='Tag',required='', data-validation-required-message='Please enter a tag to access the post')
-							p.help-block.text-danger		
+							p.help-block.text-danger
 					.control-group
 						.form-group.floating-label-form-group.controls
 							label Author
-							input#email.form-control(type='text',name='author' ,placeholder='Author' )
+							input#email.form-control(type='text', name='author', value="Aayush Dutt", placeholder='Author' )
 							p.help-block.text-danger
 					.control-group
 						.form-group.floating-label-form-group.controls
@@ -59,11 +59,6 @@ block content
 						.form-group.floating-label-form-group.controls
 							label Post Image Name
 							input#email.form-control(type='text',name='post_image' placeholder='Post image name')
-							p.help-block.text-danger
-					.control-group
-						.form-group.floating-label-form-group.controls
-							label Password
-							input#email.form-control(type='password',name='password', placeholder='Shhh.. Enter your password quitely', required='', data-validation-required-message='What?? You don\'t know the password??' )
 							p.help-block.text-danger
 					.control-group
 						.form-group.floating-label-form-group.controls

@@ -12,7 +12,7 @@ block content
 	// Main Content
 	.container
 		.row
-			.col-lg-8.col-md-10.mx-auto				
+			.col-lg-8.col-md-10.mx-auto
 				form#contactForm(method="POST", action="/posts/update/#{post.tag}", enctype="multipart/form-data")
 					.control-group
 						.form-group.floating-label-form-group.controls
@@ -38,7 +38,7 @@ block content
 						.form-group.floating-label-form-group.controls
 							label Tag
 							input#phone.form-control(type='text', value="#{post.tag}", name='tag' placeholder='Tag',required='', data-validation-required-message='Please enter a tag to access the post')
-							p.help-block.text-danger		
+							p.help-block.text-danger
 					.control-group
 						.form-group.floating-label-form-group.controls
 							label Author
@@ -53,11 +53,6 @@ block content
 						.form-group.floating-label-form-group.controls
 							label Post Image Name
 							input#email.form-control(type='text', value="#{post.post_image}", name='post_image' placeholder='Post image name')
-							p.help-block.text-danger
-					.control-group
-						.form-group.floating-label-form-group.controls
-							label Password
-							input#email.form-control(type='password', name='password', placeholder='Shhh.. Enter your password quitely', required='', data-validation-required-message='What?? You don\'t know the password??' )
 							p.help-block.text-danger
 					.control-group
 						.form-group.floating-label-form-group.controls

@@ -2,9 +2,14 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var multer = require('multer')
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var posts = require('./routes/posts');
+var admin = require('./routes/admin');
+var Admin = require('./models/admin');
 
 var app = express();
 
@@ -16,8 +21,31 @@ app.use(favicon(path.join(__dirname, 'public', '2.png')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+//body parser setup
+var jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+// Passport Setup
+app.use(require("express-session")({ secret: "cats", resave:false, saveUninitialized:false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(Admin.authenticate()));
+passport.serializeUser(Admin.serializeUser());
+passport.deserializeUser(Admin.deserializeUser());
+
+
+// Login route
+app.post('/login', urlencodedParser, function(req, res) {
+  passport.authenticate('local')(req, res, function () {
+    console.log('user authenticated!!')
+    res.redirect('/admin');
+});
+})
+
+app.use('/', urlencodedParser, index);
 app.use('/posts', posts);
+app.use('/admin',isLoggedIn, admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -25,6 +53,15 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+      next();
+  } else {
+      res.redirect('/login');
+  }
+}
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -40,4 +77,4 @@ app.use(function(err, req, res, next) {
 port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log('running on port: '+ port)
-});
+})

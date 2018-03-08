@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  // Page Header
+  header.masthead(style="background-image: url('')")
+    .overlay
+    .container
+      .row
+        .col-lg-8.col-md-10.mx-auto
+          .site-heading
+            h1 Admin Panel
+            span#indexSub.subheading What do you wanna do Sir?
+  // Main Content
+  .container
+    .row
+      .col-lg-8.col-md-10.mx-auto
+        a(href='/admin/add') Add Post?
+        each post, i in posts
+          .post-preview
+            a(href='/posts/#{post.tag}')
+              h2.post-title
+                | !{post.title}
+              h3.post-subtitle
+                | !{post.meta_body}
+            p.post-meta(style="margin-bottom:10px")
+              | Posted by 
+              a(href='/about') #{post.author}
+              |               on #{post.date}
+            a(href='/admin/update/#{post.tag}') Edit
+            a(href='/posts/delete', class="ml-3", style="color:red") Delete
+          hr
+        
+
+        // Pager
+        .clearfix
+          a.btn.btn-primary.float-right(href='#') Older Posts →
+  hr
+

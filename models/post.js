@@ -22,9 +22,6 @@ var postSchema = new mongoose.Schema({
     body_markdown: {
         type: String
     },
-    images: {
-        type: String
-    },
     meta_body:{
         type: String
     },

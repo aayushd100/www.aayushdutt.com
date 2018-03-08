@@ -1,0 +1,33 @@
+extends layout
+
+block content
+	// Page Header
+	header.masthead(style="background-image: url('img/contact-bg.jpg')")
+		.overlay
+		.container
+			.row
+				.col-lg-8.col-md-10.mx-auto
+					.page-heading
+						h1 Register
+						span.subheading Wanna be an admin? Register here. 
+	// Main Content
+	.container
+		.row
+			.col-lg-8.col-md-10.mx-auto
+				form#contactForm(action="/register", method="POST")
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label User Name
+							input#name.form-control(type='text',name="username", placeholder='User-Name', required='', data-validation-required-message='Please enter your name.')
+							p.help-block.text-danger
+					.control-group
+						.form-group.floating-label-form-group.controls
+							label Password
+							input#name.form-control(type='password',name="password", placeholder='Password', required='', data-validation-required-message='Please enter your name.')
+							p.help-block.text-danger
+					br
+					#success
+					.form-group
+						button#sendMessageButton.btn.btn-primary(type='submit') Register
+	hr
+	

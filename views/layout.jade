@@ -36,6 +36,9 @@ html(lang='en')
               a.nav-link(href='/posts') Posts
             li.nav-item
               a.nav-link(href='/contact') Contact
+            if authenticated
+              li.nav-item
+                a.nav-link(href='/logout') Logout
     block content
     // Footer
     footer
