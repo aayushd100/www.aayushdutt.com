@@ -17,6 +17,7 @@
 * Add admin route
 * Add checkbox for private and public post
 * add different user accounts so that they can access their own blog posts
+* Add a method to backup posts and user uploaded images
 
 ## To implement the admin routes:
 /admin

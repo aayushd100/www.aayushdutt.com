@@ -39,7 +39,8 @@ passport.deserializeUser(Admin.deserializeUser());
 app.post('/login', urlencodedParser, function(req, res) {
   passport.authenticate('local')(req, res, function () {
     console.log('user authenticated!!')
-    res.redirect('/admin');
+    res.redirect(req.session.returnTo || '/admin');
+    delete req.session.returnTo;
 });
 })
 
@@ -58,6 +59,7 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
       next();
   } else {
+    req.session.returnTo = req.originalUrl; 
       res.redirect('/login');
   }
 }
