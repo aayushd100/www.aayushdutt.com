@@ -17,7 +17,6 @@ var keys = require('./../config/keys')
     storage: storage
   }).array('images');
 //end multer config
-var db = require('../models');
 
 
 exports.getAdmin = function(req, res, next){
@@ -32,9 +31,6 @@ exports.getAdmin = function(req, res, next){
   }
 
 
-exports.getLogin = function(req, res, next){
-  res.render('login', {authenticated: true})
-}
 
 exports.getUpdatePosts = function(req, res, next){
   db.Post.find()
